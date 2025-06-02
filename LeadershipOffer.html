@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jio Pagaar – Leadership Role Offer Dashboard</title>
+  <style>
+    .card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #001a70;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.card table td,
+.card table th {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+.highlight {
+  font-weight: bold;
+  font-size: 22px;
+  color: #0b4d91;
+}
+.highlight-sub {
+  font-weight: normal;
+  color: #555;
+  font-size: 14px;
+}
+.dynamic-comment {
+  font-style: italic;
+  color: #006400;
+  font-size: 13px;
+  margin-top: 6px;
+}
+.ltip-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.ltip-segment {
+  background-color: #e0e7ff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+    .dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 30px;
+}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+    }
+    .header {
+      background-color: #001a70;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      background-color: #e0e0e0;
+      padding: 10px;
+    }
+    .tab-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      background-color: #ccc;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .tab-buttons button.active {
+      background-color: #001a70;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+      padding: 30px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .form-section {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h3 {
+      color: #001a70;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+  </style>
+</head>
+<body>
+
+  <div class="header">Jio Pagaar – Leadership Role Offer Dashboard</div>
+         <!-- ✅ One Back Button to Offer Intelligence -->
+   <!-- <a href="jiopagaar.html#dashboard" class="back-btn">← Back to Offer Intelligence</a>
+     -->
+   <a href="jiopagaar.html" class="back-btn">← Back to Menu</a>
+
+  <div class="tab-buttons">
+    <button onclick="showTab('input')" class="active">Input Data</button>
+    <button onclick="showTab('output')">Offer Analysis</button>
+  </div>
+
+  <div id="input" class="tab-content active">
+
+    <div class="form-section">
+      <h3>Candidate Details</h3>
+      <div class="grid-2">
+        <div class="form-group"><label>Date of Interaction</label><input type="date"></div>
+      </div>
+      <div class="grid-4">
+        <div class="form-group"><label>Title</label><input type="text"></div>
+        <div class="form-group"><label>First Name</label><input type="text"></div>
+        <div class="form-group"><label>Middle Name</label><input type="text"></div>
+        <div class="form-group"><label>Surname</label><input type="text"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h4 style="color:#001a70">Organization 1 (Current)</h4>
+      <div class="grid-2">
+        <div class="form-group"><label>Organization Name</label><input type="text"></div>
+        <div class="form-group"><label>Industry Type</label><input type="text"></div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>Role</label><input type="text"></div>
+        <div class="form-group"><label>Revenue(INR/US$)</label><input type="text"></div>
+        <div class="form-group"><label>Designation</label><input type="text"></div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>From</label><input type="date"></div>
+        <div class="form-group"><label>To</label><input type="date"></div>
+        <div class="form-group"><label>Reports To</label><input type="text"></div>
+        <div class="form-group"><label>Team Size</label><input type="number"></div>
+      </div>
+
+      <hr style="margin: 30px 0; border-top: 2px dashed #ccc;">
+
+      <h4 style="color:#001a70">Organization 2 (Previous)</h4>
+      <div class="grid-2">
+        <div class="form-group"><label>Organization Name</label><input type="text"></div>
+        <div class="form-group"><label>Industry Type</label><input type="text"></div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>Role</label><input type="text"></div>
+        <div class="form-group"><label>Revenue(INR/US$)</label><input type="text"></div>
+        <div class="form-group"><label>Designation</label><input type="text"></div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>From</label><input type="date"></div>
+        <div class="form-group"><label>To</label><input type="date"></div>
+        <div class="form-group"><label>Reports To</label><input type="text"></div>
+        <div class="form-group"><label>Team Size</label><input type="number"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Compensation</h3>
+      <div class="grid-2">
+        <div class="form-group"><label>Committed Pay (₹)</label><input type="number"></div>
+        <div class="form-group"><label>Annual Bonus / Variable Pay (₹)</label><input type="number"></div>
+        <div class="form-group"><label>STI (₹)</label><input type="number"></div>
+        <div class="form-group"><label>Deferred Pay (₹)</label><input type="number"></div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label>Current Year % Increase</label><input type="text"></div>
+        <div class="form-group"><label>Last Year % Increase</label><input type="text"></div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group"><label>Bonus % of Target (Current)</label><input type="text"></div>
+        <div class="form-group"><label>Bonus % of Target (Last)</label><input type="text"></div>
+        <div class="form-group"><label>Bonus Frequency</label><input type="text" placeholder="Yearly/Quarterly"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Long Term Incentive Plan</h3>
+      <div class="grid-4">
+        <div class="form-group"><label>Stock Option Type</label><input type="text"></div>
+        <div class="form-group"><label>Grant Price / Unit (₹)</label><input type="number"></div>
+        <div class="form-group"><label>Total Share Count</label><input type="number"></div>
+        <div class="form-group"><label>Value (₹ Lakhs)</label><input type="number"></div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label>Vesting: Y1 (%)</label><input type="number"></div>
+        <div class="form-group"><label>Vesting: Y2 (%)</label><input type="number"></div>
+        <div class="form-group"><label>Vesting: Y3 (%)</label><input type="number"></div>
+        <div class="form-group"><label>Vesting: Y4 (%)</label><input type="number"></div>
+      </div>
+      <div class="form-group"><label>No. of Years</label><input type="number"></div>
+      <div class="form-group">
+        <label style="display:block; font-weight:bold;">Linkage</label>
+        <div style="display: flex; gap: 30px; padding-top: 8px;">
+          <label><input type="checkbox" style="margin-right:6px;"> Individual</label>
+          <label><input type="checkbox" style="margin-right:6px;"> BU / Function</label>
+          <label><input type="checkbox" style="margin-right:6px;"> Organization</label>
+          <label><input type="checkbox" style="margin-right:6px;"> None</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Benefits</h3>
+      <div class="grid-2">
+        <div class="form-group"><label>Car</label><input type="text"></div>
+        <div class="form-group"><label>Accommodation</label><input type="text"></div>
+        <div class="form-group"><label>Club</label><input type="text"></div>
+        <div class="form-group"><label>Gadgets</label><input type="text"></div>
+        <div class="form-group"><label>Other Benefits</label><input type="text"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Remarks</h3>
+      <textarea rows="4" placeholder="Enter any additional remarks here..."></textarea>
+    </div>
+  </div>
+
+ 
+ <div id="output" class="tab-content">
+  <div class="dashboard"> <!-- ✅ Added dashboard wrapper -->
+
+    <div class="card">
+      <h2>Experience Snapshot</h2>
+      <table>
+        <tr><td>Current:</td><td><strong>ABB</strong></td></tr>
+        <tr><td>Previous:</td><td><strong>Microsoft</strong></td></tr>
+        <tr><td>Next Role:</td><td><em>TBD</em></td></tr>
+        <tr><td>Industry Tenure:</td><td>16 years</td></tr>
+        <tr><td>Cross-Functional Exposure:</td><td>Engineering, Strategy, Digital Ops</td></tr>
+        <tr><td>Geographic Mobility:</td><td>India, Singapore, Middle East</td></tr>
+      </table>
+      <div class="dynamic-comment">Mapped to L14 Grade, handling ₹300 Cr portfolio and 600+ team size</div>
+      <div class="dynamic-comment">Brings strong global + digital + strategic blend across core business units</div>
+    </div>
+
+    <div class="card">
+      <h2>Compensation Summary</h2>
+      <table>
+        <tr><td>Base Salary:</td><td><span class="highlight">₹2.7 Cr</span><br><span class="highlight-sub">Based on current drawn fixed pay</span><br><div class="dynamic-comment">Flat vs current. Scope to uplift 10–15% post internal parity check.</div></td></tr>
+        <tr><td>Incentives:</td><td><span class="highlight">₹1.1 Cr</span><br><span class="highlight-sub">Bonus + STI + Deferred Pay</span><br><div class="dynamic-comment">Target achievement consistently 110–115% → high bonus eligibility justified.</div></td></tr>
+        <tr><td>Stock (LTI):</td><td><span class="highlight">54 L</span><br><span class="highlight-sub">4,921 Options @ ₹1,100 | 4-Year Vesting</span><br><div class="dynamic-comment">Equity value is ~49% of total variable — aligns with top CXO LTI benchmarks.</div></td></tr>
+        <tr><td>Total YoY Growth:</td><td><span>12% (Current), 11% (Last)</span><br><span class="highlight-sub">Consistent high performer</span><br><div class="dynamic-comment">Outpaces India CXO avg increment (8.7%) – suggests future leadership potential.</div></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Long-Term Incentive Plan</h2>
+      <div>Stock Options: 4,921 @ ₹1,100</div>
+      <div class="ltip-bar">
+        <div class="ltip-segment">25% Individual</div>
+        <div class="ltip-segment">30% BU/Function</div>
+        <div class="ltip-segment">30% Organization</div>
+        <div class="ltip-segment">15% Other</div>
+      </div>
+      <div style="margin-top: 12px;">Vesting: 4 Years</div>
+      <div class="dynamic-comment">Vesting distribution encourages long-term retention aligned with org performance.</div>
+    </div>
+
+    <div class="card" style="grid-column: span 2;">
+      <h2>Benefits Offered – Leadership Tier</h2>
+      <table>
+        <thead>
+          <tr><th>Benefit</th><th>Eligibility & Type</th><th>Policy Tier</th><th>Estimated Value (₹)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Car</td><td>Company-leased Sedan (₹30L cap), Fuel & Driver</td><td>CXO Premium</td><td>₹6,00,000</td></tr>
+          <tr><td>Accommodation</td><td>Lease Rental – Up to ₹2L/month</td><td>Tier 1 Metro</td><td>₹24,00,000</td></tr>
+          <tr><td>Club</td><td>Joining + Annual Premium Membership</td><td>Taj / Gymkhana</td><td>₹3,00,000</td></tr>
+          <tr><td>Gadgets</td><td>Laptop + iPhone (Latest Gen)</td><td>Top Leader Kit</td><td>₹2,00,000</td></tr>
+          <tr><td>Others</td><td>Home Office + Wellness</td><td>Customized</td><td>₹1,00,000</td></tr>
+        </tbody>
+      </table>
+      <div class="dynamic-comment">Benefits aligned to Jio CXO policy grid, total value ~7% of total CTC.</div>
+    </div>
+
+    <div class="card" style="grid-column: span 2;">
+      <h2>Proposed Total Compensation</h2>
+      <div class="highlight" style="font-size: 28px;">₹5.0 Cr</div>
+      <div class="dynamic-comment">In line with Top 90th percentile of Aon India Executive Survey for Digital Leadership Roles.</div>
+    </div>
+
+  </div> <!-- ✅ Close .dashboard -->
+</div> <!-- ✅ Close #output tab -->
+
+
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

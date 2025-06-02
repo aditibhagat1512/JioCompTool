@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Market Data Integration – Jio Pagaar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fb;
+    }
+
+    .header {
+      background-color: #001a70;
+      color: white;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* .sidebar {
+      width: 230px;
+      background-color: #1f1f1f;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding: 20px 0;
+    }
+
+    .sidebar h2 {
+      color: white;
+      font-size: 20px;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .sidebar a.active, .sidebar a:hover {
+      background-color: #333;
+    } */
+
+    .main {
+      margin-left: 250px;
+      padding: 40px;
+    }
+
+    .back-link {
+      color: #001a70;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #001a70;
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .card img {
+      width: 50px;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .card button {
+      padding: 8px 14px;
+      background-color: #0056d2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #0040aa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div><strong>Jio Pagaar</strong></div>
+    <div>Hi Admin</div>
+  </div>
+
+  <!-- <div class="sidebar">
+    <h2>Benchmarking</h2>
+    <a href="#" class="active">Market Data Integration</a>
+    <a href="#">Benchmark Range Builder</a>
+    <a href="#">Pay Parity Analyzer</a>
+    <a href="#">Dynamic Benchmark Filters</a>
+    <a href="#">Vendor Management</a>
+    <a href="#">Reports & Dashboards</a>
+    <a href="#">Custom Benchmark Uploader</a>
+    <a href="#">Alerts & Updates</a>
+  </div> -->
+
+  <div class="main">
+    <a href="JioPagaar.html#benchmarkingSubmodules" class="back-link">← Back to Benchmarking</a>
+    <h1>Market Data Integration</h1>
+    <p>Integrate external compensation data with internal pay structures for smarter compensation planning.</p>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/upload.png"/>
+        <div class="card-title">Upload Market Data</div>
+        <div class="card-desc">Import files from Aon, Mercer, or WTW</div>
+        <button onclick="alert('Opening Upload Portal')">Upload</button>
+      </div>
+
+      <!-- <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/checkmark.png"/>
+        <div class="card-title">Validation & Error Handling</div>
+        <div class="card-desc">Check for mismatches and data issues</div>
+        <button onclick="alert('Running Validation Checks')">Validate</button>
+      </div> -->
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/combo-chart--v1.png"/>
+        <div class="card-title">Market Dashboard</div>
+        <div class="card-desc">View visual market vs internal comparisons</div>
+        <button onclick="alert('Opening Dashboard')">View Dashboard</button>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/log.png"/>
+        <div class="card-title">Integration Activity Logs</div>
+        <div class="card-desc">Track uploads, mappings, and actions</div>
+        <button onclick="alert('Viewing Logs')">View Logs</button>
+      </div>
+<!-- 
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/alarm.png"/>
+        <div class="card-title">Auto Updates Scheduling</div>
+        <div class="card-desc">Enable automatic sync of market data</div>
+        <button onclick="alert('Setting up Auto Sync')">Schedule</button>
+      </div> -->
+    </div>
+  </div>
+
+</body>
+</html>

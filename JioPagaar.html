@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Jio Pagaar Admin Dashboard</title>
+
+  <!-- ✅ Global Styles for body and layout -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ✅ Tooltip for hover info */
+    .card-tooltip {
+      position: absolute;
+      top: -32px;
+      right: 0;
+      background-color: #333;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .card:hover .card-tooltip {
+      opacity: 1;
+    }
+
+    /* ✅ Header section with logo and greeting */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    /* ✅ Main dashboard and submodule container layout */
+    .dashboard,
+    .planner-submodules {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* ✅ Card styling for modules and submodules */
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      height: 40px;
+      margin-bottom: 15px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .submodule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    /* ✅ Back button styling */
+    .back-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+
+   <!-- ✅ JavaScript: Functional version with named handlers -->
+  <script>
+    // ✅ Hide all modules
+    function hideAll() {
+      const ids = [
+        "dashboard",
+        "plannerSubmodules",
+        "benchmarkingSubmodules",
+        "esopsSubmodules",
+        "variablePaySubmodules",
+        "shortTermIncentivesSubmodules",
+        "policiesSubmodules",
+        "offerIntelligenceSubmodules",
+        "hrAnalyticsSubmodules",
+        "ltiSubmodules",
+        "salesIncentivesSubmodules",
+        "totalRewardsSubmodules"
+      ];
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+      });
+    }
+
+    // ✅ Back to Dashboard
+    function goBack() {
+      hideAll();
+      document.getElementById("dashboard").style.display = "grid";
+    }
+
+    // ✅ Special redirection
+    function goBacktoModule() {
+      window.location.href = "jiopagaar.html#variablePaySubmodules";
+    }
+
+    // ✅ Individual show functions (required as per your existing HTML)
+    function showPlanner() {
+      hideAll();
+      document.getElementById("plannerSubmodules").style.display = "block";
+    }
+
+    function showBenchmarking() {
+      hideAll();
+      document.getElementById("benchmarkingSubmodules").style.display = "block";
+    }
+
+    function showESOPs() {
+      hideAll();
+      document.getElementById("esopsSubmodules").style.display = "block";
+    }
+
+    function showVariablePay() {
+      hideAll();
+      document.getElementById("variablePaySubmodules").style.display = "block";
+    }
+
+    function showLTI() {
+      hideAll();
+      document.getElementById("ltiSubmodules").style.display = "block";
+    }
+
+    function showSTI() {
+      hideAll();
+      document.getElementById("stiSubmodules").style.display = "block";
+    }
+
+    function showSalesIncentives() {
+      hideAll();
+      document.getElementById("salesIncentivesSubmodules").style.display = "block";
+    }
+
+    function showTotalRewards() {
+      hideAll();
+      document.getElementById("totalRewardsSubmodules").style.display = "block";
+      window.location.href = 'employeeDashBoard.html';
+    }
+
+    function showOfferIntelligence() {
+      hideAll();
+      document.getElementById("offerIntelligenceSubmodules").style.display = "block";
+      window.location.href = 'LeadershipOffer.html';
+    }
+
+    function showHRAnalytics() {
+      hideAll();
+      document.getElementById("hrAnalyticsSubmodules").style.display = "block";
+    }
+
+    function showPolicies() {
+
+      
+  window.location.href = 'policy.html'; // clean, minimal
+
+      // hideAll();
+      // document.getElementById("policiesSubmodules").style.display = "block";
+      // window.location.href = 'policy.html';
+    }
+
+    // ✅ Handle hash-based display on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        hideAll();
+        const target = document.getElementById(hash);
+        if (target) target.style.display = "block";
+      }
+    });
+  </script>
+
+
+</head>
+
+<body>
+  <!-- ✅ Header: Logo and Admin Greeting -->
+  <div class="header">
+    <div class="logo">
+      <img alt="Jio Logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Reliance_Jio_Logo.svg/512px-Reliance_Jio_Logo.svg.png" />
+      <h2>Pagaar</h2>
+    </div>
+    <div><strong>Hi Admin</strong></div>
+  </div>
+
+  <!-- ✅ Dashboard Grid: Main module entry points -->
+  <div class="dashboard" id="dashboard">
+
+    <div class="card" onclick="showBenchmarking()">
+      <img src="https://img.icons8.com/ios-filled/50/bar-chart.png" />
+      <div class="card-title">Benchmarking</div>
+      <div class="card-tooltip">Compare internal pay vs. external market standards.</div>
+    </div>
+
+    <div class="card" onclick="showPlanner()">
+      <img src="https://img.icons8.com/ios-filled/50/planner.png" />
+      <div class="card-title">Budgeting</div>
+      <div class="card-tooltip">Plan budget & increments,  simulate hikes, and allocate wisely.</div>
+    </div>
+
+    <div class="card" onclick="showVariablePay()">
+      <img src="https://img.icons8.com/ios-filled/50/performance.png" />
+      <div class="card-title">Incentives</div>
+      <div class="card-tooltip">Design short-term and long-term incentive structures.</div>
+    </div>
+
+    <div class="card" onclick="showESOPs()">
+      <img src="https://img.icons8.com/ios-filled/50/stocks.png" />
+      <div class="card-title">ESOPs</div>
+      <div class="card-tooltip">Grant, vest, and manage employee stock options effectively.</div>
+    </div>
+
+    <div class="card" onclick="showTotalRewards()">
+      <img src="https://img.icons8.com/ios-filled/50/gift-card.png" />
+      <div class="card-title">Employee Dashboard</div>
+      <div class="card-tooltip">Explore pay breakdowns and reward summaries.</div>
+    </div>
+
+    <div class="card" onclick="showOfferIntelligence()">
+      <img src="https://img.icons8.com/ios-filled/50/light-on--v1.png" />
+      <div class="card-title">Offer Intelligence</div>
+      <div class="card-tooltip">Generate offers based on historical and benchmarked logic.</div>
+    </div>
+
+    <div class="card" onclick="showHRAnalytics()">
+      <img src="https://img.icons8.com/ios-filled/50/combo-chart--v1.png" />
+      <div class="card-title">HR Analytics</div>
+      <div class="card-tooltip">Track attrition, workforce trends, and DEI metrics.</div>
+    </div>
+
+    <div class="card" onclick="showPolicies()">
+      <img src="https://img.icons8.com/ios-filled/50/rules.png" />
+      <div class="card-title">Policies</div>
+      <div class="card-tooltip">Manage compensation, benefits, and other HR policies.</div>
+    </div>
+  </div>
+
+
+ <!-- ✅ Planner & Budgeting Submodules -->
+<div class="planner-submodules" id="plannerSubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>Budgeting</h2>
+  <div class="submodule-grid">
+
+        <div class="card" onclick="window.location.href='cycle_setup.html'">
+      <img src="https://img.icons8.com/ios-filled/50/user-credentials.png" />
+      <div class="card-title">Cycle Setup</div>
+    </div>
+
+    <div class="card" onclick="window.location.href='eligibilityHike.html'">
+      <img src="https://img.icons8.com/ios-filled/50/user-credentials.png" />
+      <div class="card-title">Eligibility &amp; Hike Logic</div>
+    </div>
+
+    <div class="card" onclick="window.location.href='simulationEngine.html'">
+      <img src="https://img.icons8.com/ios-filled/50/artificial-intelligence.png" />
+      <div class="card-title">Simulation Engine</div>
+    </div>
+
+    <div class="card" onclick="window.location.href='guardrailsSuperRules.html'">
+      <img src="https://img.icons8.com/ios-filled/50/privacy-policy.png" />
+      <div class="card-title">Guardrails &amp; Super Rules</div>
+    </div>
+
+    <!-- <div class="card" onclick="window.location.href='budgetAllocation.html'">
+      <img src="https://img.icons8.com/ios-filled/50/money-bag.png" />
+      <div class="card-title">Budget Allocation</div>
+    </div> -->
+
+    <div class="card" onclick="window.location.href='Increment.html'">
+      <img src="https://img.icons8.com/ios-filled/50/up.png" />
+      <div class="card-title">Increments</div>
+    </div>
+
+    <!-- <div class="card" onclick="window.location.href='workspaceManager.html'">
+      <img src="https://img.icons8.com/ios-filled/50/collaborator-male.png" />
+      <div class="card-title">Proxy</div>
+    </div> -->
+
+    <div class="card" onclick="window.location.href='approvalWorkflow.html'">
+      <img src="https://img.icons8.com/ios-filled/50/approval.png" />
+      <div class="card-title">Approval Workflows</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ✅ Benchmarking Submodules -->
+<div class="planner-submodules" id="benchmarkingSubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>Benchmarking</h2>
+  <div class="submodule-grid">
+    <div class="card" onclick="window.location.href='marketBenchmarking.html'">
+      <img src="https://img.icons8.com/ios-filled/50/database.png" />
+      <div class="card-title">Market Data Benchmarking</div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ ESOPs Submodules -->
+<div class="planner-submodules" id="esopsSubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>ESOPs</h2>
+  <div class="submodule-grid">
+
+    <div class="card" onclick="window.location.href='ESOPMaster.html'">
+      <img src="https://img.icons8.com/ios-filled/50/stack-of-money.png" />
+      <div class="card-title">ESOP Master</div>
+    </div>
+
+    <!-- <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/decision.png" />
+      <div class="card-title">Eligibility &amp; Allocation Engine</div>
+    </div> -->
+
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/contract.png" />
+      <div class="card-title">Documentation</div>
+    </div>
+
+    <!-- <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/line-chart.png" />
+      <div class="card-title">Insights Dashboard</div>
+    </div> -->
+
+  </div>
+</div>
+
+<!-- ✅ Placeholder for Offer Intelligence (redirect only) -->
+<div id="offerIntelligenceSubmodules" class="planner-submodules" style="display: none;"></div>
+
+<!-- ✅ Placeholder for Employee Dashboard (redirect to employeeDashBoard.html) -->
+<div id="totalRewardsSubmodules" class="planner-submodules" style="display: none;"></div>
+
+<!-- ✅ Variable Pay Submodules -->
+<div class="planner-submodules" id="variablePaySubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>Incentives</h2>
+  <div class="submodule-grid">
+    <div class="card" onclick="showSTI()">
+      <img src="https://img.icons8.com/ios-filled/50/pie-chart.png" />
+      <div class="card-title">Variable Pay</div>
+    </div>
+    <div class="card" onclick="showLTI()">
+      <img src="https://img.icons8.com/ios-filled/50/trophy.png" />
+      <div class="card-title">Long Term Incentives</div>
+    </div>
+    <div class="card" onclick="window.location.href='Sales.html'">
+      <img src="https://img.icons8.com/ios-filled/50/sales-performance.png" />
+      <div class="card-title">Sales Incentives</div>
+      
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ✅ Sales Incentives Submodules -->
+<div class="planner-submodules" id="salesIncentivesSubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>Sales Incentives</h2>
+  <div class="submodule-grid">
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/design--v1.png" />
+      <div class="card-title">Plan Designer</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/bullish.png" />
+      <div class="card-title">Quota Management</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/calculator.png" />
+      <div class="card-title">Commission Calculator</div>
+    </div>
+    <div class="card" onclick="showBenchmarking()">
+      <img src="https://img.icons8.com/ios-filled/50/combo-chart.png" />
+      <div class="card-title">Dashboards</div>
+    </div>
+    <div class="card" onclick="showTotalRewards()">
+      <img src="https://img.icons8.com/ios-filled/50/controller.png" />
+      <div class="card-title">Gamification</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/approval.png" />
+      <div class="card-title">Approval Workflows</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/refresh.png" />
+      <div class="card-title">Payout Sync</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/audit.png" />
+      <div class="card-title">Audit Logs</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/bar-chart-report.png" />
+      <div class="card-title">Reports & Analytics</div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ HR Analytics Submodules -->
+<div class="planner-submodules" id="hrAnalyticsSubmodules" style="display: none;">
+  <button class="back-button" onclick="goBack()">← Back to Main Menu</button>
+  <h2>HR Analytics</h2>
+  <div class="submodule-grid">
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/line-chart.png" />
+      <div class="card-title">Internal Trends</div>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/line-chart--v1.png" />
+      <div class="card-title">External Trends</div>
+    </div>
+    <div class="card" onclick="window.location.href='wageBill.html'">
+      <img src="https://img.icons8.com/ios-filled/50/money.png" />
+      <div class="card-title">Wage Bill</div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Close body and html -->
+</body>
+
+</html>

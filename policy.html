@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jio Pagaar – Compensation Policy Library</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ddd;
+    }
+    .filters {
+      display: flex;
+      gap: 10px;
+      padding: 20px 40px;
+      background-color: #fff;
+    }
+    .filters .matrix-btn {
+      background: #001a70;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .dashboard-stats {
+      display: flex;
+      gap: 40px;
+      padding: 0 40px 20px 40px;
+    }
+    .dashboard-stats div {
+      background-color: #e6f0ff;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 0 40px 40px 40px;
+    }
+    .policy-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      border: 1px solid #ddd;
+      position: relative;
+    }
+    .policy-card h4 {
+      margin: 0 0 10px 0;
+    }
+    .policy-card .tags {
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
+    .policy-card small {
+      color: #666;
+    }
+    .policy-card button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .policy-card button::before {
+      content: "\1F441";
+    }
+    .policy-card .meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #777;
+    }
+    .tabs {
+      display: flex;
+      gap: 20px;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ccc;
+      background-color: #fff;
+    }
+    .tabs div {
+      cursor: pointer;
+      padding: 10px;
+      font-weight: 600;
+    }
+    .tabs .active {
+      border-bottom: 2px solid #001a70;
+      color: #001a70;
+    }
+    .policy-content {
+      padding: 20px 40px;
+      background-color: #fff;
+    }
+    .compare-select {
+      margin-top: 10px;
+    }
+    .upload-section {
+      padding: 20px 40px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
+    .upload-section label {
+      font-weight: bold;
+    }
+    .upload-section input[type="file"] {
+      margin-left: 10px;
+    }
+    .feedback-section {
+      padding: 20px 40px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      margin-top: 20px;
+    }
+    .feedback-section h4 {
+      margin-bottom: 10px;
+    }
+    .feedback-section textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: none;
+    }
+    .feedback-section button {
+      margin-top: 10px;
+      background-color: #001a70;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="display: flex; align-items: center; gap: 20px;">
+      <h2 style="margin: 0;">Jio Pagaar – Policy Library</h2>
+      <select id="viewSelector" onchange="switchView()" style="margin-left: 20px; padding: 6px; font-size: 14px;">
+        <option value="admin">Admin View</option>
+        <option value="employee">Employee View</option>
+      </select>
+    </div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 13px; color: #555;">👤 Logged in as <strong>Admin</strong></div>
+      <div style="font-size: 12px; color: #777;">Last Login: Today at 10:42 AM</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    
+   <!-- <a href="jiopagaar.html#dashboard" class="back-btn">← Back to Menu</a> -->
+    <a href="jiopagaar.html" class="back-btn">← Back to Menu</a>
+    <input type="search" placeholder="Search policy name, tag or keyword..." />
+    <select>
+      <option>Employee Level</option>
+    </select>
+    <select>
+      <option>Policy Status</option>
+    </select>
+    <button>Show Expired</button>
+    <button>Under Review</button>
+    <button>Recently Changed</button>
+    <button class="matrix-btn" onclick="alert('Opening Applicability Matrix...')">View Applicability Matrix</button>
+  </div>
+
+  <div class="dashboard-stats">
+    <div>
+      <strong>82%</strong><br>Policies Updated<br>Last 12 Months
+    </div>
+    <div>
+      <strong>4</strong><br>Approaching Expiry
+    </div>
+    <div>
+      <strong>9</strong><br>Approved Exceptions
+    </div>
+    <div>
+      <strong>14</strong><br>Last Reviewed: Mar 2024
+    </div>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card">
+      <h4>Base Pay Structure</h4>
+      <small>Last updated: Mar 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Base Pay Structure')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Incentive Pay (Variable)</h4>
+      <small>Last updated: Jan 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Incentive Pay')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Long-Term Incentive (LTI)</h4>
+      <small>Last updated: Feb 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening LTI Policy')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>ESOP Grant & Vesting</h4>
+      <small>Last updated: Jan 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening ESOP Grant')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Perquisites & Flex Benefits</h4>
+      <small>Last updated: Mar 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Perquisites')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Mobility & Relocation</h4>
+      <small>Last updated: Mar 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Mobility Policy')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Performance Rating Norms</h4>
+      <small>Last updated: Feb 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Performance Norms')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Severance & Exit Pay</h4>
+      <small>Last updated: Jan 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Severance Policy')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>CTC Design & Customization</h4>
+      <small>Last updated: Feb 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening CTC Policy')"></button>
+    </div>
+    <div class="policy-card">
+      <h4>Policy Exceptions & Controls</h4>
+      <small>Last updated: Mar 2024</small>
+      
+      <div class="meta admin-only">Version: — | ⏰ Review — | 🕵️ Viewed —</div>
+      <button onclick="alert('Opening Policy Controls')"></button>
+    </div>
+  </div>
+
+  <div class="feedback-section">
+    <h4>💬 Submit a Feedback or Policy Clarification</h4>
+    <textarea placeholder="Have a question about any compensation policy? Raise it here..."></textarea>
+    <button onclick="alert('Feedback submitted!')">Submit</button>
+  </div>
+
+<script>
+  function switchView() {
+    const view = document.getElementById("viewSelector").value;
+    const adminElements = document.querySelectorAll('.upload-section, .admin-only, .matrix-btn');
+    const feedbackSection = document.querySelector('.feedback-section');
+    const policyCards = document.querySelectorAll('.policy-card');
+
+    const employeePolicyTitles = [
+      "Base Pay Structure",
+      "Incentive Pay (Variable)",
+      "ESOP Grant & Vesting",
+      "Perquisites & Flex Benefits",
+      "Mobility & Relocation",
+      "Performance Rating Norms",
+      "Severance & Exit Pay"
+    ];
+
+    policyCards.forEach(card => {
+      const title = card.querySelector('h4').innerText.trim();
+      if (view === 'employee') {
+        if (employeePolicyTitles.includes(title)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      } else {
+        card.style.display = 'block';
+      }
+    });
+
+    adminElements.forEach(el => {
+      el.style.display = view === 'employee' ? 'none' : '';
+    });
+
+    if (feedbackSection) feedbackSection.style.display = 'block';
+  }
+</script>
+</body>
+</html>

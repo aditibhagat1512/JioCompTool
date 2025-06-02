@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Jio Pagaar – Total Rewards Statement (Aditi Bhagat)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f2f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #004785;
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        .subheader {
+            padding: 1rem 2rem;
+            background: #e6f0fa;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+        .summary-cards {
+            display: flex;
+            justify-content: space-around;
+            padding: 1.5rem 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+            width: 15%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            background: #ffffff;
+        }
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .tab.active {
+            border-color: #004785;
+            font-weight: bold;
+            color: #004785;
+        }
+        .content {
+            display: none;
+            padding: 2rem;
+        }
+        .content.active {
+            display: block;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        canvas {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: block;
+        }
+        .footer {
+            padding: 2rem;
+            background: #e6f0fa;
+            text-align: center;
+            font-style: italic;
+        }
+        body {
+            background-image: url('https://tse4.mm.bing.net/th/id/OIP.wIJkMjuftQ_Y5pnQGnqSqQHaE8?pid=Api');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .card, .content, .footer {
+            background-color: rgba(255, 255, 255, 0.93);
+        }
+</style>
+</head>
+<body>
+<header>
+<h1>Total Rewards Statement – FY 2024–25</h1>
+<div>Aditi Bhagat | Emp ID: JIO12345</div>
+</header>
+<div class="subheader">
+<div>Department: HR | Location: Mumbai</div>
+<div>Date Generated: 08 May 2025</div>
+</div>
+<div class="summary-cards">
+<div class="card">Total CTC<br/><strong>₹ 16,30,000</strong></div>
+<div class="card">Fixed Pay<br/><strong>₹ 12,50,000</strong></div>
+<div class="card">Variable Pay<br/><strong>₹ 3,20,000</strong></div>
+<div class="card">Benefits<br/><strong>₹ 60,000</strong></div>
+<div class="card">ESOP/LTI<br/><strong>₹ 4,00,000</strong></div>
+<div class="card">CTC Growth YoY<br/><strong>+12%</strong></div>
+</div>
+<div class="tabs">
+<div class="tab active" data-tab="cash">Cash Compensation</div>
+<div class="tab" data-tab="benefits">Benefits</div>
+<div class="tab" data-tab="esops">ESOPs &amp; LTI</div>
+<div class="tab" data-tab="perks">Perquisites</div>
+<div class="tab" data-tab="insights">Insights</div>
+</div>
+<div class="content active" id="cash">
+<ul>
+<li>Basic Salary: ₹ 6,00,000</li>
+<li>HRA: ₹ 2,50,000</li>
+<li>Special Allowance: ₹ 2,50,000</li>
+<li>Provident Fund (Employer): ₹ 1,00,000</li>
+<li>Bonus Paid: ₹ 3,00,000 (vs Target ₹3,20,000)</li>
+</ul>
+<canvas id="cashChart"></canvas>
+</div>
+<div class="content" id="benefits">
+<ul>
+<li>Mediclaim: ₹ 20 lakh family cover</li>
+<li>Life Insurance: ₹ 50 lakh</li>
+<li>Meal Card: ₹ 18,000 annually</li>
+<li>Wellness Program: ₹ 10,000 reimbursement</li>
+<li>L&amp;D Budget: ₹ 15,000 for upskilling</li>
+<li>On-Site Facilities: Cafeteria, Gym, Transport</li>
+</ul>
+</div>
+<div class="content" id="esops">
+<ul>
+<li>ESOPs Granted: 1,000 units</li>
+<li>ESOPs Vested: 400 units</li>
+<li>Estimated Value: ₹ 2,40,000</li>
+<li>LTI Plan: ₹ 1,60,000 (3-year vesting)</li>
+</ul>
+</div>
+<div class="content" id="perks">
+<ul>
+<li>Company Car (₹ fuel limit: 8,000/month)</li>
+<li>Mobile &amp; Internet: ₹ 2,000/month</li>
+<li>Club Membership: ₹ 25,000 annually</li>
+<li>Work-from-home setup: One-time ₹ 15,000</li>
+</ul>
+</div>
+<div class="content" id="insights">
+<ul>
+<li>You earn <strong>8% above market average</strong> for your role.</li>
+<li>Your benefits utilization is <strong>85%</strong>.</li>
+<li><strong>Tax-efficient CTC:</strong> 64%</li>
+<li>CTC growth over 3 years: <strong>+32%</strong></li>
+</ul>
+</div>
+<div class="footer">
+    “Dear Aditi, thank you for your exceptional performance. We are proud to present your total rewards — a reflection of your value to Jio.”
+</div>
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"));
+            tab.classList.add("active");
+            document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+    });
+
+    const ctx = document.getElementById('cashChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Basic', 'HRA', 'Special Allow.', 'PF', 'Bonus'],
+            datasets: [{
+                data: [600000, 250000, 250000, 100000, 300000],
+                backgroundColor: ['#007BFF', '#00C49F', '#FFBB28', '#FF8042', '#A28EFF']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+</script>
+</body>
+</html>

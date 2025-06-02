@@ -1,0 +1,241 @@
+  
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jio Pagaar – Guardrails & Super Rules</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f6fa;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 16px 24px;
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+    .sidebar {
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+    .main {
+      flex-grow: 1;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .status {
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .green { background-color: #d4edda; color: #155724; }
+    .yellow { background-color: #fff3cd; color: #856404; }
+    .red { background-color: #f8d7da; color: #721c24; }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      background-color: #0052cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .insight {
+      padding: 10px;
+      border-left: 4px solid;
+      margin-top: 10px;
+      background-color: #fff;
+    }
+    .info { border-color: #007bff; }
+    .warn { border-color: #ffc107; }
+    .danger { border-color: #dc3545; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>Jio Pagaar >> Planner & Budgeting >> Guardrails & Super Rules</div>
+  <div>User | Help</div>
+</header>
+     <!-- ✅ One Back Button to Planner Submodules -->
+   <!-- <a href="jiopagaar.html#plannerSubmodules" class="back-btn">← Back to Planner Submodules</a> -->
+    <!-- <button class="back-button" onclick="goBack()">← Back to Main Menu</button> -->
+   <!-- <button onclick="window.history.back()">← Back to Planner Submodules</button> -->
+    <button class="back-button" onclick="goBack()">← Back to Submodules</button>
+
+<script>
+function goBack() {
+    window.location.href = "jiopagaar.html#plannerSubmodules";
+}
+</script>
+
+   
+
+<div class="container">
+
+
+  <div class="sidebar">
+    <h2>Guardrail Configuration</h2>
+    <label>Budget Increase Cap</label>
+    <input type="number" value="10"> %
+
+    <label>Max Hike Above Eligibility</label>
+    <input type="number" value="5"> %
+
+    <label>Zero Hike Employees</label>
+    <input type="number" value="15"> %
+
+    <label>Compare Derived vs Actual Compensation</label>
+    <select>
+      <option>At Employee Level</option>
+      <option>At Department Level</option>
+    </select>
+
+    <label>Rating Distribution</label>
+    <select>
+      <option>Rating 3+</option>
+      <option>Rating 4+</option>
+    </select>
+
+    <button>Set Guardrails</button>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Add New Guardrail</h2>
+      <label>Rule Name</label><input id="grName" type="text">
+      <label>Threshold</label><input id="grThreshold" type="text">
+      <label>Actual Value</label><input id="grActual" type="text">
+      <label>Status</label>
+      <select id="grStatus">
+        <option value="green">Within</option>
+        <option value="yellow">At Risk</option>
+        <option value="red">Breach</option>
+      </select>
+      <button id="addGRBtn">+ Add Guardrail</button>
+    </div>
+
+    <div class="card">
+      <h2>Guardrail Rules</h2>
+      <table id="guardrailTable">
+        <tr><th>Rule</th><th>Threshold</th><th>Actual Value</th><th>Status</th></tr>
+        <tr><td>Budget Increase Cap</td><td>≤ 10%</td><td>10.3%</td><td><span class="status yellow">At Risk</span></td></tr>
+        <tr><td>Hike Above Max Eligibility</td><td>≤ 5%</td><td>2%</td><td><span class="status green">Within</span></td></tr>
+        <tr><td>Zero Hike Employees</td><td>≤ 15%</td><td>18%</td><td><span class="status red">Breach</span></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Add New Super Rule</h2>
+      <label>Rule Description</label><input id="srDesc" type="text">
+      <label>Threshold</label><input id="srThreshold" type="text">
+      <label>Status</label>
+      <select id="srStatus">
+        <option value="green">Within</option>
+        <option value="yellow">At Risk</option>
+        <option value="red">Violation</option>
+      </select>
+      <button id="addSRBtn">+ Add Super Rule</button>
+    </div>
+
+    <div class="card">
+      <h2>Super Rules</h2>
+      <table id="superRuleTable">
+        <tr><th>Rule</th><th>Threshold</th><th>Status</th></tr>
+        <tr><td>Hike to New Joiners</td><td>Not Permitted</td><td><span class="status green">Within</span></td></tr>
+        <tr><td>More than 1 Exception per Manager</td><td>Not Allowed</td><td><span class="status yellow">At Risk</span></td></tr>
+        <tr><td>Compliance Exceptions</td><td>0 Instances</td><td><span class="status red">Violation</span></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Smart Insights</h2>
+      <div class="insight warn">⚠ Zero hike % is trending at 18% — consider redistributing pool.</div>
+      <div class="insight info">ℹ Rating distribution logic within benchmark.</div>
+      <div class="insight danger">❌ Super rule violated – action required.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('addGRBtn').addEventListener('click', function () {
+  const name = document.getElementById('grName').value;
+  const threshold = document.getElementById('grThreshold').value;
+  const actual = document.getElementById('grActual').value;
+  const statusValue = document.getElementById('grStatus').value;
+  const statusText = { green: 'Within', yellow: 'At Risk', red: 'Breach' }[statusValue];
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>${threshold}</td>
+    <td>${actual}</td>
+    <td><span class="status ${statusValue}">${statusText}</span></td>
+  `;
+  document.getElementById('guardrailTable').appendChild(row);
+});
+
+document.getElementById('addSRBtn').addEventListener('click', function () {
+  const desc = document.getElementById('srDesc').value;
+  const threshold = document.getElementById('srThreshold').value;
+  const statusValue = document.getElementById('srStatus').value;
+  const statusText = { green: 'Within', yellow: 'At Risk', red: 'Violation' }[statusValue];
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${desc}</td>
+    <td>${threshold}</td>
+    <td><span class="status ${statusValue}">${statusText}</span></td>
+  `;
+  document.getElementById('superRuleTable').appendChild(row);
+});
+</script>
+
+</body>
+</html>
+
+
+

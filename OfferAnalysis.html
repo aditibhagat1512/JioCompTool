@@ -1,0 +1,160 @@
+Here is the **entire HTML code** of your finalized **Offer Analysis Dashboard – Leadership Role**:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer Analysis Dashboard - Leadership Role</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fa;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+    .header {
+      background-color: #001a70;
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      padding: 40px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .card table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .card table td, .card table th {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .highlight {
+      font-weight: bold;
+      font-size: 20px;
+      color: #0b4d91;
+    }
+    .highlight-sub {
+      font-weight: normal;
+      color: #555;
+      font-size: 14px;
+    }
+    .dynamic-comment {
+      font-style: italic;
+      color: #006400;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .ltip-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .ltip-segment {
+      background-color: #e0e7ff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    Offer Analysis Dashboard – Leadership Role
+  </div>
+  <div class="dashboard">
+    <div class="card">
+      <h2>Experience Snapshot</h2>
+      <table>
+        <tr><td>Current:</td><td><strong>ABB</strong></td></tr>
+        <tr><td>Previous:</td><td><strong>Microsoft</strong></td></tr>
+        <tr><td>Next Role:</td><td><em>TBD</em></td></tr>
+        <tr><td>Industry Tenure:</td><td>16 years</td></tr>
+        <tr><td>Cross-Functional Exposure:</td><td>Engineering, Strategy, Digital Ops</td></tr>
+        <tr><td>Geographic Mobility:</td><td>India, Singapore, Middle East</td></tr>
+      </table>
+      <div class="dynamic-comment">Mapped to L14 Grade, handling ₹300 Cr portfolio and 600+ team size</div>
+      <div class="dynamic-comment">Brings strong global + digital + strategic blend across core business units</div>
+    </div>
+
+    <div class="card">
+      <h2>Compensation Summary</h2>
+      <table>
+        <tr><td>Base Salary:</td><td><span class="highlight">₹2.7 Cr</span><br><span class="highlight-sub">Based on current drawn fixed pay</span><br><div class="dynamic-comment">Flat vs current. Scope to uplift 10–15% post internal parity check.</div></td></tr>
+        <tr><td>Incentives:</td><td><span class="highlight">₹1.1 Cr</span><br><span class="highlight-sub">Bonus + STI + Deferred Pay</span><br><div class="dynamic-comment">Target achievement consistently 110–115% → high bonus eligibility justified.</div></td></tr>
+        <tr><td>Stock (LTI):</td><td><span class="highlight">54 L</span><br><span class="highlight-sub">4,921 Options @ ₹1,100 | 4-Year Vesting</span><br><div class="dynamic-comment">Equity value is ~49% of total variable — aligns with top CXO LTI benchmarks.</div></td></tr>
+        <tr><td>Total YoY Growth:</td><td><span>12% (Current), 11% (Last)</span><br><span class="highlight-sub">Consistent high performer</span><br><div class="dynamic-comment">Outpaces India CXO avg increment (8.7%) – suggests future leadership potential.</div></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Long-Term Incentive Plan</h2>
+      <div>Stock Options: 4,921 @ ₹1,100</div>
+      <div class="ltip-bar">
+        <div class="ltip-segment">25% Individual</div>
+        <div class="ltip-segment">30% BU/Function</div>
+        <div class="ltip-segment">30% Organization</div>
+        <div class="ltip-segment">15% Other</div>
+      </div>
+      <div style="margin-top: 12px;">Vesting: 4 Years</div>
+      <div class="dynamic-comment">Vesting distribution encourages long-term retention aligned with org performance.</div>
+    </div>
+
+    <div class="card" style="grid-column: span 2;">
+      <h2>Benefits Offered – Leadership Tier</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Benefit</th>
+            <th>Eligibility & Type</th>
+            <th>Policy Tier</th>
+            <th>Estimated Value (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Car</td><td>Company-leased Sedan (₹30L cap), Fuel & Driver</td><td>CXO Premium</td><td>₹6,00,000</td></tr>
+          <tr><td>Accommodation</td><td>Lease Rental – Up to ₹2L/month</td><td>Tier 1 Metro</td><td>₹24,00,000</td></tr>
+          <tr><td>Club</td><td>Joining + Annual Premium Membership</td><td>Taj / Gymkhana</td><td>₹3,00,000</td></tr>
+          <tr><td>Gadgets</td><td>Laptop + iPhone (Latest Gen)</td><td>Top Leader Kit</td><td>₹2,00,000</td></tr>
+          <tr><td>Others</td><td>Home Office + Wellness</td><td>Customized</td><td>₹1,00,000</td></tr>
+        </tbody>
+      </table>
+      <div class="dynamic-comment">Benefits aligned to Jio CXO policy grid, total value ~7% of total CTC.</div>
+    </div>
+
+    <div class="card" style="grid-column: span 2;">
+      <h2>Proposed Total Compensation</h2>
+      <div class="highlight" style="font-size: 28px;">₹5.0 Cr</div>
+      <div class="dynamic-comment">In line with Top 90th percentile of Aon India Executive Survey for Digital Leadership Roles.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Designed by Comp & Ben Team | Jio Pagaar Platform 2025
+  </div>
+</body>
+</html>

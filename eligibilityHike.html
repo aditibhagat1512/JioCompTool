@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jio Pagaar – Eligibility & Hike Logic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 16px 24px;
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      height: calc(100vh - 64px);
+    }
+    .sidebar {
+      width: 280px;
+      background: #ffffff;
+      border-right: 1px solid #ccc;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .section {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+      font-weight: 500;
+    }
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #0052cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .logic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .logic-table th, .logic-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    .tab {
+      background: #e6f0ff;
+      padding: 10px 20px;
+      margin-right: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .insight-box {
+      background: #fff6e5;
+      padding: 10px;
+      margin-top: 10px;
+      border-left: 4px solid #ffc107;
+    }
+    .right-panel {
+      width: 280px;
+      background: #ffffff;
+      border-left: 1px solid #ccc;
+      padding: 20px;
+    }
+    .flex-wrapper {
+      display: flex;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .tag {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #555;
+    }
+    .grid-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .override-box {
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+    .override-box textarea {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>Jio Pagaar >> Planner & Budgeting >> Eligibility & Hike Logic</div>
+  <div>User | Help</div>
+</header>
+
+<div class="container">
+     <!-- ✅ One Back Button to Planner Submodules -->
+   <a href="jiopagaar.html#plannerSubmodules" class="back-btn">← Back to Budgeting</a>
+  <div class="sidebar">
+    <h2>Eligibility Criteria</h2>
+    <label>Performance Rating</label>
+    <select>
+      <option>All</option>
+      <option>A*</option>
+      <option>A+</option>
+      <option>A</option>
+      <option>B</option>
+    </select>
+    <label>Time Since Last Hike (months)</label>
+    <input type="number" min="0" placeholder="e.g., 12">
+    <label>Minimum Tenure in Org (months)</label>
+    <input type="number" min="0" placeholder="e.g., 6">
+    <label>Confirmation Status</label>
+    <select>
+      <option>Confirmed</option>
+      <option>All</option>
+    </select>
+    <label>On Notice Period</label>
+    <select>
+      <option>Exclude</option>
+      <option>Include</option>
+    </select>
+    <button>Apply Criteria</button>
+  </div>
+
+  <div class="flex-wrapper">
+    <div class="main">
+      <div class="section">
+        <h2>Hike Logic Builder</h2>
+        <div class="tabs">
+          <div class="tab">Rule-Based View</div>
+          <div class="tab">Employee Eligibility View</div>
+          <div class="tab">Impact View</div>
+        </div>
+        <table class="logic-table" id="logicTable">
+          <thead>
+            <tr>
+              <th>Designation</th>
+              <th>Rating</th>
+              <th>Tenure</th>
+              <th>Eligible</th>
+              <th>Min Hike %</th>
+              <th>Max Hike %</th>
+            </tr>
+          </thead>
+          <tbody id="logicTableBody">
+            <tr>
+              <td>Executive</td><td>5</td><td>>12m</td><td>Yes</td><td>8%</td><td>12%</td>
+            </tr>
+            <tr>
+              <td>Senior Manager</td><td>4</td><td>>6m</td><td>Yes</td><td>6%</td><td>9%</td>
+            </tr>
+            <tr>
+              <td>Manager</td><td>3</td><td>>6m</td><td>No</td><td>0%</td><td>0%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="grid-actions">
+          <button onclick="addRule()" style="background:#28a745;">+ Add Rule</button>
+          <button onclick="exportToCSV()">Export Logic</button>
+          <button onclick="resetGrid()" style="background:#ccc; color:#000;">Reset Grid</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Smart Insights</h2>
+        <div class="insight-box">⚠️ 25% of Level 3 employees are ineligible — may impact morale</div>
+        <div class="insight-box">⚠️ Max hike rule for Rating 5 is lower than market benchmark</div>
+        <button style="margin-top: 10px;">Adjust Parameters</button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="section-title">Exception Management</div>
+      <ul>
+        <li>Meet Tenure, not Rating <span class="tag">(22)</span></li>
+        <li>Exceed Max Hike – Rounding <span class="tag">(18)</span></li>
+      </ul>
+      <div class="override-box">
+        <label>Manual Override</label>
+        <input type="checkbox"> Allow Exception
+        <label>Comment</label>
+        <textarea rows="3" placeholder="Explain override reason..."></textarea>
+      </div>
+      <button style="margin-top: 20px; background:#ff6600;">Exception Approval Flow</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const defaultRows = `
+    <tr><td>L1</td><td>5</td><td>>12m</td><td>Yes</td><td>8%</td><td>12%</td></tr>
+    <tr><td>L2</td><td>4</td><td>>6m</td><td>Yes</td><td>6%</td><td>9%</td></tr>
+    <tr><td>L3</td><td>3</td><td>>6m</td><td>No</td><td>0%</td><td>0%</td></tr>
+  `;
+
+  function addRule() {
+    const tbody = document.getElementById('logicTableBody');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td contenteditable="true">Lx</td>
+      <td contenteditable="true">Rating</td>
+      <td contenteditable="true">Tenure</td>
+      <td contenteditable="true">Yes/No</td>
+      <td contenteditable="true">%</td>
+      <td contenteditable="true">%</td>
+    `;
+    tbody.appendChild(row);
+  }
+
+  function resetGrid() {
+    document.getElementById('logicTableBody').innerHTML = defaultRows;
+  }
+
+  function exportToCSV() {
+    const rows = document.querySelectorAll("#logicTable tr");
+    const csv = [];
+    rows.forEach(row => {
+      const cols = row.querySelectorAll("td, th");
+      const rowData = [];
+      cols.forEach(col => rowData.push(col.innerText));
+      csv.push(rowData.join(","));
+    });
+    const csvString = csv.join("\\n");
+    const blob = new Blob([csvString], { type: 'text/csv' });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "hike_logic.csv";
+    a.click();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Incentives – Jio Pagaar</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #001a70;
+      color: white;
+      padding: 20px 40px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .filters, .summary, .table-section, .simulator, .rule-engine, .analytics, .notifications, .approvals {
+      padding: 30px 40px;
+      background-color: white;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .filters select, .filters input {
+      margin: 0 10px 10px 0;
+      padding: 8px;
+    }
+
+    .summary {
+      display: flex;
+      gap: 30px;
+    }
+
+    .summary-card {
+      flex: 1;
+      background-color: #e9f0ff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .summary-card small {
+      display: block;
+      margin-top: 6px;
+      color: #555;
+    }
+
+    progress {
+      width: 90%;
+      height: 10px;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .simulator input, .simulator button {
+      margin: 8px 0;
+      padding: 8px;
+    }
+
+    canvas {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="header">Sales Incentives Dashboard</div>
+  
+   <a href="jiopagaar.html#variablePaySubmodules" class="back-btn">← Back to Incentives</a>
+
+  <div class="filters">
+    <select>
+      <option disabled selected>Period</option>
+      <option>Monthly</option>
+      <option>Quarterly</option>
+      <option>Annually</option>
+    </select>
+    <select>
+      <option disabled selected>Business Unit</option>
+      <option>Mobility</option>
+      <option>Home</option>
+      <option>SMB</option>
+      <option>SLG</option>
+      <option>Digital Services</option>
+    </select>
+    <select>
+      <option disabled selected>Region / Territory</option>
+      <option>North</option>
+      <option>South</option>
+      <option>East</option>
+      <option>West</option>
+    </select>
+    <select>
+      <option disabled selected>Sales Role</option>
+      <option>Sales Executive</option>
+      <option>Sales Manager</option>
+      <option>Area Head</option>
+    </select>
+    <input type="text" placeholder="Search Employee">
+  </div>
+
+  <div class="summary">
+    <div class="summary-card">
+      <h2>32%</h2>
+      <p>Employees >100% Target</p>
+      <small style="color: green;">↑ +6% vs Last Month</small>
+    </div>
+    <div class="summary-card">
+      <h2>₹42.3 Cr / ₹50 Cr</h2>
+      <p>Incentive Budget Utilization</p>
+      <progress value="84" max="100"></progress>
+    </div>
+    <div class="summary-card">
+      <h2>12 / 78</h2>
+      <p>Exceptions + Pending Approvals</p>
+      <small>Updated 5 mins ago</small>
+    </div>
+    <div class="summary-card">
+      <h2>Perf Split</h2>
+      <p>&lt;80%: 18 | 80–100%: 42 | &gt;100%: 18</p>
+    </div>
+  </div>
+
+  <div class="performance-filters" style="margin: 10px 40px;">
+  <label>Filter by Performance:</label>
+  <select onchange="filterByPerformanceBand(this.value)">
+    <option value="all">All</option>
+    <option value="lt80">Below 80%</option>
+    <option value="80to100">80% - 100%</option>
+    <option value="gt100">Above 100%</option>
+  </select>
+</div>
+
+
+  <div class="table-section">
+  <h3>Performance Table</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Employee</th>
+        <th>Role</th>
+        <th>Target (₹)</th>
+        <th>Achieved (₹)</th>
+        <th>% Achieved</th>
+        <th>Payout Eligible</th>
+        <th>Actual Payout</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alice Smith</td>
+        <td>Sales Executive</td>
+        <td>3,69,033</td>
+        <td>32,000</td>
+        <td>85%</td>
+        <td>₹20,000</td>
+        <td>₹18,000</td>
+        <td><button>Simulate</button> <button>Approve</button></td>
+      </tr>
+
+    <tr>
+  <td>Ravi Kumar</td>
+  <td>Sales Manager</td>
+  <td>8,50,000</td>
+  <td>9,20,000</td>
+  <td>108%</td>
+  <td>₹65,000</td>
+  <td>₹68,000</td>
+  <td><button>Simulate</button> <button>Approve</button></td>
+</tr>
+<tr>
+  <td>Megha Shah</td>
+  <td>Area Head</td>
+  <td>12,00,000</td>
+  <td>9,40,000</td>
+  <td>78%</td>
+  <td>₹90,000</td>
+  <td>₹70,200</td>
+  <td><button>Simulate</button> <button>Review</button></td>
+</tr>
+<tr>
+  <td>Rohan Desai</td>
+  <td>Sales Executive</td>
+  <td>4,10,000</td>
+  <td>4,40,000</td>
+  <td>107%</td>
+  <td>₹25,000</td>
+  <td>₹28,000</td>
+  <td><button>Simulate</button> <button>Approve</button></td>
+</tr>
+<tr>
+  <td>Nikita Verma</td>
+  <td>Sales Manager</td>
+  <td>9,00,000</td>
+  <td>8,70,000</td>
+  <td>97%</td>
+  <td>₹60,000</td>
+  <td>₹58,200</td>
+  <td><button>Simulate</button> <button>Approve</button></td>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="simulator">
+  <h3>Payout Simulator</h3>
+  <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+    <input type="number" id="simTarget" placeholder="Enter Target ₹" style="flex: 1; min-width: 200px;">
+    <input type="number" id="simAchieved" placeholder="Enter Achieved ₹" style="flex: 1; min-width: 200px;">
+    <button onclick="runSimulator()" style="height: 40px;">Simulate</button>
+  </div>
+  <div style="margin-top: 16px;">
+    <p><strong>% Achieved:</strong> <span id="simPercent">--</span></p>
+    <p><strong>Estimated Incentive (5% of Achieved):</strong> <span id="simIncentive">--</span></p>
+  </div>
+</div>
+
+<div class="rule-engine">
+  <h3>Incentive Rule Engine</h3>
+  <p>Target Type: Revenue | Rule Type: Linear | Threshold: 80% | Cap: 150%</p>
+</div>
+
+<div class="analytics">
+  <h3>Visual Analytics</h3>
+  <canvas id="barChart" height="100"></canvas>
+  <canvas id="lineChart" height="100"></canvas>
+</div>
+
+<div class="notifications">
+  <h3>Notifications & Exceptions Log</h3>
+  <ul>
+    <li>3 payouts need review</li>
+    <li>Incentive exception auto-escalated</li>
+  </ul>
+</div>
+
+<div class="approvals">
+  <h3>Approvals & Audit Trail</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Performed By</th>
+        <th>Date/Time</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Approved</td>
+        <td>Manager A</td>
+        <td>01 Jun 11:45</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Exception</td>
+        <td>HR Reviewer</td>
+        <td>01 Jun 12:10</td>
+        <td>Slab logic deviation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+
+   function runSimulator() {
+  const target = parseFloat(document.getElementById("simTarget").value);
+  const achieved = parseFloat(document.getElementById("simAchieved").value);
+
+  if (isNaN(target) || isNaN(achieved) || target <= 0 || achieved < 0) {
+    alert("Please enter valid numbers greater than 0.");
+    return;
+  }
+
+  const percent = ((achieved / target) * 100).toFixed(2);
+  const incentive = (achieved * 0.05).toFixed(2); // Fixed 5%
+
+  document.getElementById("simPercent").innerText = `${percent}%`;
+  document.getElementById("simIncentive").innerText = `₹${incentive}`;
+}
+  const ctx1 = document.getElementById('barChart').getContext('2d');
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['North', 'South', 'East', 'West'],
+      datasets: [{
+        label: 'Target vs. Achieved',
+        data: [90, 75, 80, 85],
+        backgroundColor: '#007bff'
+      }]
+    }
+  });
+
+  const ctx2 = document.getElementById('lineChart').getContext('2d');
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+      datasets: [{
+        label: 'Target vs. Payout %',
+        data: [80, 85, 78, 90],
+        borderColor: '#28a745',
+        fill: false
+      }]
+    }
+  });
+</script>
+
+</body>
+
+</html>
+
+

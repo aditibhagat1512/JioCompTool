@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wage Bill Benchmarking – Jio Pagaar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #ffffff;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 18px;
+      color: #001a70;
+    }
+
+    .sidebar label,
+    .sidebar select {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .main {
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .kpi-cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    canvas,
+    input[type='number'] {
+      width: 100%;
+    }
+
+    .flex-split {
+      display: flex;
+      gap: 30px;
+    }
+  </style>
+</head>
+
+<body>
+             <!-- ✅ One Back Button to Planner Submodules -->
+   <a href="jiopagaar.html#hrAnalyticsSubmodules" class="back-btn">← Back to HR Analytics Submodules</a>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Filters</h2>
+      <label>Company
+        <select>
+          <option>Jio</option>
+          <option>Airtel</option>
+          <option>Vodafone</option>
+        </select>
+      </label>
+      <label>Business Unit
+        <select>
+          <option>Sales</option>
+          <option>Technology</option>
+          <option>Corporate</option>
+        </select>
+      </label>
+      <label>Level
+        <select>
+          <option>Executive</option>
+          <option>Mid</option>
+          <option>Entry</option>
+        </select>
+      </label>
+      <label>Year
+        <select>
+          <option>2023</option>
+          <option>2022</option>
+          <option>2021</option>
+        </select>
+      </label>
+    </div>
+    <div class="main">
+      <h1>Wage Bill Benchmarking</h1>
+      <div class="kpi-cards">
+        <div class="card"><strong>Total Wage Bill</strong><br><span id="bill">₹220 Cr</span></div>
+        <div class="card"><strong>% of Revenue</strong><br><span id="revenue">15.5%</span></div>
+        <div class="card"><strong>% Fixed vs Variable</strong><br><span id="split">8.2%</span></div>
+      </div>
+
+      <div class="section">
+        <h3>Peer Benchmarking</h3>
+        <canvas id="peerChart" height="200"></canvas>
+      </div>
+
+      <div class="section flex-split">
+        <div style="flex:1">
+          <h3>Component Split View</h3>
+          <canvas id="componentChart" height="200"></canvas>
+        </div>
+        <div style="flex:1">
+          <h3>Cost by Business Unit</h3>
+          <canvas id="buChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <div class="section flex-split">
+        <div style="flex:1">
+          <h3>Productivity Metrics</h3>
+          <ul>
+            <li>Revenue / Wage Bill: 6.5</li>
+            <li>EBITDA / Wage Bill: 1.8</li>
+          </ul>
+        </div>
+        <div style="flex:1">
+          <h3>Simulation Tool</h3>
+          <label>Salary Hike (%) <input type="number" id="hike" value="5"></label>
+          <label>Headcount Addition <input type="number" id="headcount" value="50"></label>
+          <p><strong>Estimated New Wage Bill: </strong><span id="newBill">₹231 Cr</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const peerChart = new Chart(document.getElementById('peerChart'), {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          label: 'Wage Bill vs Peers',
+          data: [
+            { x: 100, y: 12 }, { x: 130, y: 14 }, { x: 160, y: 15 },
+            { x: 190, y: 18 }, { x: 220, y: 22 }
+          ],
+          backgroundColor: '#007bff'
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    const componentChart = new Chart(document.getElementById('componentChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Fixed Pay', 'Variable', 'ESOPs'],
+        datasets: [{
+          data: [71, 20, 9],
+          backgroundColor: ['#4e73df', '#36b9cc', '#f6c23e']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    const buChart = new Chart(document.getElementById('buChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Headcount Share', 'Cost Share', 'Bonus %'],
+        datasets: [{
+          label: 'BU Cost Metrics',
+          data: [60, 40, -10],
+          backgroundColor: ['#1cc88a', '#36b9cc', '#e74a3b']
+        }]
+      },
+      options: { responsive: true }
+    });
+
+    const hikeInput = document.getElementById('hike');
+    const headcountInput = document.getElementById('headcount');
+    const newBillDisplay = document.getElementById('newBill');
+
+    function updateWageBill() {
+      const base = 220;
+      const hike = parseFloat(hikeInput.value);
+      const heads = parseInt(headcountInput.value);
+      const estimated = base * (1 + hike / 100) + (heads * 0.2);
+      newBillDisplay.textContent = `₹${estimated.toFixed(2)} Cr`;
+    }
+
+    hikeInput.addEventListener('input', updateWageBill);
+    headcountInput.addEventListener('input', updateWageBill);
+  </script>
+</body>
+
+</html>

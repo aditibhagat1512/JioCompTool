@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Market Data – Jio Pagaar</title>
+  <style>
+    .main {
+      padding: 40px;
+    }
+
+    .back-link {
+      color: #001a70;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #001a70;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 15px;
+      color: #555;
+      max-width: 800px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 48px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #444;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card button {
+      padding: 10px 20px;
+      background-color: #0056d2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      min-width: 120px;
+    }
+
+    .card button:hover {
+      background-color: #0040aa;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #001a70;
+      color: white;
+      padding: 20px 40px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: #001a70;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    select, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .upload-btn {
+      margin-top: 30px;
+      background-color: #0056d2;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .upload-btn:hover {
+      background-color: #003d99;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+    }
+  .section-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body style="background: linear-gradient(to bottom right, #f5f7fa, #eef1f7);">
+  <div class="header">
+    <div><strong>Jio Pagaar</strong></div>
+    <div>Hi Admin</div>
+  </div>
+
+  <div class="main" id="dashboardView">
+    <div class="section-container">
+
+     <!-- ✅ One Back Button to Planner Submodules -->
+   <a href="jiopagaar.html#benchmarkingSubmodules" class="back-btn">← Back to Benchmarking</a>
+
+    <!-- <a href="#" class="back-link">← Back to Benchmarking</a> -->
+    <h1>Market Data Benchmarking</h1>
+    <p class="description">Integrate external compensation data with internal pay structures for smarter compensation planning and benchmarking insights.</p>
+
+    <div class="grid" style="margin-top: 20px;">
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/upload.png" />
+        <div class="card-title">Upload Market Data</div>
+        <div class="card-desc">Import files from Aon, Mercer, WTW etc.</div>
+        <button onclick="showUploadForm()">Upload</button>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/combo-chart--v1.png" />
+        <div class="card-title">Percentile Analytics</div>
+        <div class="card-desc">View P25, P50, P75 insights for each role</div>
+<button onclick="window.location.href='yy.html'">View Analysis</button>
+      </div>
+
+
+      <!-- Inside Percentile Analytics card -->
+
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/bar-chart.png" />
+        <div class="card-title">Compa-Ratio Visualizer</div>
+        <div class="card-desc">Compare internal pay vs market medians</div>
+        <button onclick="window.location.href='compaVisualizer.html'">View Ratios</button>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/graph.png" />
+        <div class="card-title">Market Trends</div>
+        <div class="card-desc">Multi-year percentile trend lines</div>
+        <button onclick="window.location.href='per.html'">View Trends</button>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/50/approve-and-update.png" />
+        <div class="card-title">Integration Activity Logs</div>
+        <div class="card-desc">Track uploads, mappings, actions</div>
+        <button onclick="window.location.href='Integration.html'">View Logs</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="uploadView" style="display:none;">
+    <a href="#" onclick="showDashboard()" style="display:inline-block; margin-bottom:20px; color:#001a70; font-weight:bold;">← Back to Dashboard</a>
+    <h2>Upload Market Data File</h2>
+    <label for="vendor">Select Data Vendor</label>
+    <select id="vendor">
+      <option value="">-- Select Vendor --</option>
+      <option value="aon">Aon</option>
+      <option value="mercer">Mercer</option>
+      <option value="wtw">WTW</option>
+    </select>
+
+    <label for="fileUpload">Upload File</label>
+    <input type="file" id="fileUpload" accept=".csv, .xlsx" />
+    <div class="note">Accepted formats: .csv, .xlsx | Max size: 5MB</div>
+
+    <button class="upload-btn" onclick="alert('File uploaded successfully!')">Upload</button>
+  </div>
+
+  <script>
+    function showUploadForm() {
+      document.getElementById('dashboardView').style.display = 'none';
+      document.getElementById('uploadView').style.display = 'block';
+    }
+
+    function showDashboard() {
+      document.getElementById('uploadView').style.display = 'none';
+      document.getElementById('dashboardView').style.display = 'block';
+    }
+  </script>
+  </body>
+</html>
